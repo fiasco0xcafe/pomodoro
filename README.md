@@ -24,15 +24,10 @@ gcc src/main.c -o pomodoro
 ### Usage
 
 ```bash
-./pomodoro 25 # starts a 25 minute timer
+./pomodoro alarm.flac 25 # starts a 25 minute timer
 ./pomodoro --help # shows help
 ./pomodoro --version # shows the current version
 ```
-
-### Future Feature
-
-- Audio is coming soon, which will replace the debug print statement currently ending the timer.
-
 
 #### Audio Credits
 

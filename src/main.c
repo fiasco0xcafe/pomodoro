@@ -3,9 +3,20 @@
 #include <time.h>
 #include <unistd.h>
 #include <stdlib.h>
-#include "miniaudio.h"
 #define MINIAUDIO_IMPLEMENTATION
+#include "miniaudio.h"
 
+void data_callback(ma_device* pDevice, void* pOutput, const void* pInput, ma_uint32 frameCount)
+{
+    ma_decoder* pDecoder = (ma_decoder*)pDevice->pUserData;
+    if (pDecoder == NULL) {
+        return;
+    }
+
+    ma_decoder_read_pcm_frames(pDecoder, pOutput, frameCount, NULL);
+
+    (void)pInput;
+}
 
 void alarm_audio (void){
     
@@ -20,12 +31,16 @@ void print_version (void){
 }
 
 int main (int argc, char **argv){
+    ma_result result;
+    ma_decoder decoder;
+    ma_device_config deviceConfig;
+    ma_device device;
     char *endptr;
     int seconds = 0;
     time_t now = time(NULL);
     long int conversion;
 
-    if (argc < 2){
+    if (argc < 3){
         fprintf(stderr, "missing argument (pomodoro --help) for help\n");
         return 1;
     }

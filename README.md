@@ -34,4 +34,10 @@ gcc src/main.c -o pomodoro
 - Audio is coming soon, which will replace the debug print statement currently ending the timer.
 
 
+#### Audio Credits
+
+- **Alarm sound:**  
+  "ob12-arpeggiator-hard-beep-alarm.flac" by [DrNI](https://freesound.org/people/DrNI/)  
+  Source: [https://freesound.org/s/34562/](https://freesound.org/s/34562/)  
+  License: [Creative Commons Attribution NonCommercial 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
 
